@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：Element_UI_Progress
+  File name(文件名): test2
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/5/2
+  Time(创建时间)： 12:46
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/element-ui.css">
+    <script src="js/vue.js"></script>
+    <script src="js/element-ui.js"></script>
+    <style>
+        .el-progress {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="65"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="100" :format="format"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="100" status="success"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="68" status="success"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="100" status="warning"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="35" status="warning"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="100" status="exception"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="29" status="exception"></el-progress>
+    <br>
+
+</div>
+
+<script>
+    var app = new Vue
+    (
+        {
+            el: "#app",
+            data: {},
+            methods:
+                {
+                    format(percentage)
+                    {
+                        return percentage === 100 ? '满' : `${percentage}%`;
+                    }
+                },
+            mounted()
+            {
+
+            }
+        }
+    )
+</script>
+
+</body>
+</html>
