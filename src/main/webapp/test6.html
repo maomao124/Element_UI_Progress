@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：Element_UI_Progress
+  File name(文件名): test6
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/5/2
+  Time(创建时间)： 13:19
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/element-ui.css">
+    <script src="js/vue.js"></script>
+    <script src="js/element-ui.js"></script>
+    <style>
+        .el-progress {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+
+    <el-progress type="dashboard" :percentage="percentage" stroke-width="18" :color="customColor"></el-progress>
+    <br>
+    <el-progress type="dashboard" :percentage="percentage" stroke-width="18" :color="customColorMethod"></el-progress>
+    <br>
+    <el-progress type="dashboard" :percentage="percentage" stroke-width="18" :color="customColors"></el-progress>
+    <br>
+    <div>
+        <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease"></el-button>
+            <el-button icon="el-icon-plus" @click="increase"></el-button>
+        </el-button-group>
+    </div>
+
+</div>
+
+<script>
+    var app = new Vue
+    (
+        {
+            el: "#app",
+            data: {
+                percentage: 20,
+                customColor: '#409eff',
+                customColors:
+                    [
+                        {color: '#f56c6c', percentage: 20},
+                        {color: '#e6a23c', percentage: 40},
+                        {color: '#5cb87a', percentage: 60},
+                        {color: '#1989fa', percentage: 80},
+                        {color: '#6f7ad3', percentage: 100}
+                    ]
+            },
+            methods:
+                {
+                    customColorMethod(percentage)
+                    {
+                        if (percentage < 30)
+                        {
+                            return '#909399';
+                        }
+                        else if (percentage < 70)
+                        {
+                            return '#e6a23c';
+                        }
+                        else
+                        {
+                            return '#67c23a';
+                        }
+                    },
+                    increase()
+                    {
+                        this.percentage += 10;
+                        if (this.percentage > 100)
+                        {
+                            this.percentage = 100;
+                        }
+                    },
+                    decrease()
+                    {
+                        this.percentage -= 10;
+                        if (this.percentage < 0)
+                        {
+                            this.percentage = 0;
+                        }
+                    }
+                },
+            mounted()
+            {
+
+            }
+        }
+    )
+</script>
+</body>
+</html>
