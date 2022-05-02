@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：Element_UI_Progress
+  File name(文件名): test3
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/5/2
+  Time(创建时间)： 12:51
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/element-ui.css">
+    <script src="js/vue.js"></script>
+    <script src="js/element-ui.js"></script>
+    <style>
+        .el-progress {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="value"
+                 :status="status"></el-progress>
+    <br>
+    <el-progress :text-inside="true" :stroke-width="26" :percentage="value2"
+                 :status="value2>60?'success':value2>40?'warning':'exception'"></el-progress>
+</div>
+
+<script>
+    var app = new Vue
+    (
+        {
+            el: "#app",
+            data: {
+                value: 0,
+                value2: 0,
+                status: "success"
+            },
+            methods:
+                {
+                    add: function ()
+                    {
+                        var that = this;
+                        setInterval(function ()
+                        {
+                            if (that.value === 100)
+                            {
+                                that.value = 0;
+                            }
+                            that.value = that.value + 10;
+                        }, 500);
+                        setInterval(function ()
+                        {
+                            if (that.value2 === 100)
+                            {
+                                that.value2 = 0;
+                            }
+                            that.value2 = that.value2 + 1;
+                        }, 50);
+                    }
+                },
+            mounted()
+            {
+                this.add();
+            }
+        }
+    )
+</script>
+</body>
+</html>
